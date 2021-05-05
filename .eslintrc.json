@@ -5,6 +5,7 @@
     "node": true
   },
   "extends": ["plugin:react/recommended", "google"],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -16,6 +17,11 @@
   "rules": {
     "react/jsx-filename-extension": 0,
     "react/react-in-jsx-scope": 0,
-    "require-jsdoc": 0
+    "require-jsdoc": 0,
+    "object-curly-spacing": 0,
+    "no-unused-vars": 0,
+    "strict": 0,
+    "indent": 0,
+    "comma-dangle": 0
   }
 }
