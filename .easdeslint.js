@@ -13,6 +13,11 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     'react/jsx-filename-extension': 0,
     'react/react-in-jsx-scope': 0,
