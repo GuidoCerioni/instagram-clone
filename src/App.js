@@ -1,5 +1,5 @@
-import react, {lazy, Suspense} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import react, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 
 const Login = lazy(() => import('./pages/login'));
