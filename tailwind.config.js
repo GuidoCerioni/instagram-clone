@@ -14,7 +14,7 @@ module.exports = {
         faded: '00000059',
       },
       gray: {
-        base: '#616161',
+        base: '#8e8e8e',
         background: '#fafafa',
         primary: '#dbdbdb',
       },
@@ -22,11 +22,14 @@ module.exports = {
         primary: '#ed4956',
       },
     },
+    extend: {
+      screens: {
+        phone: '450px',
+      },
+      maxWidth: {
+        xxxs: '11rem',
+        xxs: '15rem',
+      },
+    },
   },
 };
-
-// text-red-primary
-// text-gray-base
-// text-gray-primary
-// bg-blue-medium
-// text-blue-medium
