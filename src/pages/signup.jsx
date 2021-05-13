@@ -60,7 +60,7 @@ export default function Login() {
 
             <p
               className="text-gray-base text-center text-lg font-bold
-            py-3 w-5/6 mb-2 max-w-xxs"
+            oh w-5/6 mb-5 max-w-xxs"
             >
               Sign up to see photos and videos from your friends.
             </p>
@@ -126,7 +126,7 @@ export default function Login() {
           >
             <p className="text-sm">
               Have an account?{` `}
-              <Link to="/login" className="font-bold text-blue-medium">
+              <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
                 Log in
               </Link>
             </p>
