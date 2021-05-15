@@ -2,7 +2,9 @@ import { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
+
 import * as ROUTES from '../constants/routes';
+import { doesUsernameExist } from '../services/firebase';
 
 export default function Login() {
   const history = useHistory();
@@ -23,6 +25,9 @@ export default function Login() {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
+    const usernameExist = await doesUsernameExist(username);
+    console.log('3');
+
     try {
     } catch (error) {}
   };
@@ -67,7 +72,7 @@ export default function Login() {
 
             {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
             <div className="mx-6">
-              <form onSubmit={handleSignUp} method="POST" id="form-SignUp">
+              <form onSubmit={handleSignUp} method="POST" id="form-signup">
                 <input
                   aria-label="Enter your email address"
                   type="text"
