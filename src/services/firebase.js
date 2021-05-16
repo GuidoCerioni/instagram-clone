@@ -7,7 +7,6 @@ export async function doesUsernameExist(username) {
     .collection('users')
     .where('username', '==', username)
     .get();
-  console.log(result.docs);
 
-  return result.docs.map((user) => user.data().length > 0);
+  return result.docs.length > 0;
 }

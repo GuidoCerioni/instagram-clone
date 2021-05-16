@@ -25,11 +25,21 @@ export default function Login() {
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    const usernameExist = await doesUsernameExist(username);
-    console.log('3');
 
-    try {
-    } catch (error) {}
+    const usernameExist = await doesUsernameExist(username);
+
+    if (usernameExist) {
+      try {
+        console.log('nice');
+        // const createdUserResult = await firebase
+        //   .auth()
+        //   .createUserWithEmailAndPassword(emailAddress, password);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log('username already exist');
+    }
   };
 
   useEffect(() => {
