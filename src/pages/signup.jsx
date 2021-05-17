@@ -28,17 +28,41 @@ export default function Login() {
 
     const usernameExist = await doesUsernameExist(username);
 
-    if (usernameExist) {
+    if (!usernameExist) {
       try {
-        console.log('nice');
-        // const createdUserResult = await firebase
-        //   .auth()
-        //   .createUserWithEmailAndPassword(emailAddress, password);
+        const createdUserResult = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(emailAddress, password);
+
+        // autentication
+        // username is displayName in firebase
+        await createdUserResult.user.updateProfile({
+          displayName: username,
+        });
+
+        // create document in 'users' collection
+        const createdUser = {
+          userId: createdUserResult.user.uid,
+          username: username.toLowerCase(),
+          fullName,
+          emailAddress: emailAddress.toLowerCase(),
+          following: [],
+          followers: [],
+          dateCreated: Date.now(),
+        };
+        await firebase.firestore().collection('users').add(createdUser);
+
+        console.log('user created!');
+
+        history.push(ROUTES.DASHBOARD);
       } catch (error) {
-        console.log(error);
+        console.log(`error`, error);
+
+        if (error.code == 'auth/email-already-in-use') setEmailAddress('');
+        setError(error.message);
       }
     } else {
-      console.log('username already exist');
+      setError('That username is already taken, please try another.');
     }
   };
 
