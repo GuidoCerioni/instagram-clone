@@ -56,8 +56,6 @@ export default function Login() {
 
         history.push(ROUTES.DASHBOARD);
       } catch (error) {
-        console.log(`error`, error);
-
         if (error.code == 'auth/email-already-in-use') setEmailAddress('');
         setError(error.message);
       }
