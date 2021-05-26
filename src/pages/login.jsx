@@ -61,13 +61,19 @@ export default function Login() {
 
             {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
             <div className="mx-6">
-              <form onSubmit={handleLogin} method="POST" id="form-login">
+              <form
+                onSubmit={handleLogin}
+                method="POST"
+                id="form-login"
+                autoComplete="new-password"
+              >
                 <input
                   aria-label="Enter your email address"
                   type="text"
                   placeholder="Email address"
                   className="text-sm placeholder-gray-base w-full py-5 px-4 h-2
-                   bg-white border border-gray-primary rounded mb-2"
+                   bg-gray-background border border-gray-primary rounded mb-2
+                   focus:ring-2 focus:ring-blue-medium"
                   onChange={({ target }) => setEmailAddress(target.value)}
                   value={emailAddress}
                 />
@@ -76,7 +82,8 @@ export default function Login() {
                   type="password"
                   placeholder="Password"
                   className="text-sm placeholder-gray-base w-full py-5 px-4 h-2
-                   bg-gray-background border border-gray-primary rounded mb-2"
+                   bg-grey-background border border-gray-primary rounded mb-2
+                   focus:ring-2 focus:ring-blue-medium"
                   onChange={({ target }) => setPassword(target.value)}
                   value={password}
                 />

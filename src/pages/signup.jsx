@@ -110,7 +110,8 @@ export default function Login() {
                   type="text"
                   placeholder="Email address"
                   className="text-sm placeholder-gray-base w-full py-5 px-4 h-2
-                   bg-gray-background border border-gray-primary rounded mb-2"
+                   bg-gray-background border border-gray-primary rounded mb-2
+                   focus:ring-2 focus:ring-blue-medium"
                   onChange={({ target }) => setEmailAddress(target.value)}
                   value={emailAddress}
                 />
@@ -119,7 +120,8 @@ export default function Login() {
                   type="text"
                   placeholder="Full Name"
                   className="text-sm placeholder-gray-base w-full py-5 px-4 h-2
-                   bg-gray-background border border-gray-primary rounded mb-2"
+                   bg-gray-background border border-gray-primary rounded mb-2
+                   focus:ring-2 focus:ring-blue-medium"
                   onChange={({ target }) => setFullName(target.value)}
                   value={fullName}
                 />
@@ -128,7 +130,8 @@ export default function Login() {
                   type="text"
                   placeholder="Username"
                   className="text-sm placeholder-gray-base w-full py-5 px-4 h-2
-                   bg-gray-background border border-gray-primary rounded mb-2"
+                   bg-gray-background border border-gray-primary rounded mb-2
+                   focus:ring-2 focus:ring-blue-medium"
                   onChange={({ target }) => setUserName(target.value)}
                   value={username}
                 />
@@ -137,7 +140,8 @@ export default function Login() {
                   type="password"
                   placeholder="Password"
                   className="text-sm placeholder-gray-base w-full py-5 px-4 h-2
-                   bg-gray-background border border-gray-primary rounded mb-2"
+                   bg-gray-background border border-gray-primary rounded mb-2
+                   focus:ring-2 focus:ring-blue-medium"
                   onChange={({ target }) => setPassword(target.value)}
                   value={password}
                 />
