@@ -5,6 +5,7 @@ module.exports = {
       white: '#ffffff',
       blue: {
         medium: '#0082f6',
+        mediumHover: '#2045f6',
       },
       black: {
         light: '#262626',
@@ -13,6 +14,7 @@ module.exports = {
       gray: {
         base: '#8e8e8e',
         background: '#fafafa',
+        hover: '#f5f5f5',
         primary: '#dbdbdb',
       },
       red: {

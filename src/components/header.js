@@ -90,7 +90,8 @@ export default function Header() {
                 <Link to={ROUTES.LOGIN}>
                   <button
                     className="bg-blue-medium text-white
-                    rounded-md px-4 py-2 font-bold"
+                    mr-3 px-4 py-2 font-bold rounded-lg
+                    hover:bg-blue-mediumHover"
                   >
                     Log in
                   </button>
@@ -98,9 +99,10 @@ export default function Header() {
                 <Link to={ROUTES.SIGN_UP}>
                   <button
                     className=" text-blue-medium
-                    r px-4 py-2font-bold"
+                    mr-3 px-4 py-2 font-bold rounded-lg
+                    hover:text-blue-mediumHover hover:bg-gray-hover"
                   >
-                    Sign Up
+                    Sign up
                   </button>
                 </Link>
               </>
