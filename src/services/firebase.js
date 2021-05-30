@@ -9,3 +9,7 @@ export async function doesUsernameExist(username) {
     .get();
   return result.docs.length > 0; // true/false
 }
+export async function getUserByUserId(uid) {
+  const user = await db.collection('users').where('userID', '==', uid).get();
+  return user;
+}
