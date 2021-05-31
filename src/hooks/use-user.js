@@ -8,7 +8,7 @@ export default function useUser() {
   const { user } = useContext(UserContext); // i need user.UID
 
   useEffect(() => {
-    async function getUserObjectByUserId(params) {
+    async function getUserObjectByUserId() {
       const response = await getUserByUserId(user.uid);
       setActiveUser(response);
     }
