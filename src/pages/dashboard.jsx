@@ -11,9 +11,13 @@ export default function Dashoard() {
   return (
     <div className="bg-gray-background">
       <Header />
-      <div className="grid">
-        <Timeline />
-        <Sidebar />
+      <div className="grid grid-cols-4">
+        <div className="col-span-3">
+          <Timeline />
+        </div>
+        <div>
+          <Sidebar />
+        </div>
       </div>
     </div>
   );
