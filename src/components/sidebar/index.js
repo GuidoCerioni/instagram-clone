@@ -9,9 +9,8 @@ export default function Sidebar() {
   console.log(`user`, user);
   return (
     <div>
-      <User />
-      <Suggestions />
+      <User username={user.username} fullName={user.fullName} />
+      <Suggestions userId={user.userId} />
     </div>
   );
 }
-// {user ? <p>user: {user.fullName}</p> : <p>not user</p>}
