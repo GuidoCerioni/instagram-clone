@@ -6,8 +6,8 @@ import { getUserByUserId } from '../services/firebase';
 export default function useUser() {
   const [activeUser, setActiveUser] = useState({});
   const [error, setError] = useState(null);
-  const { user } = useContext(UserContext); // i need user.UID
-
+  const { user } = useContext(UserContext);
+  // i need user.UID
   useEffect(() => {
     async function getUserObjectByUserId() {
       try {
@@ -18,7 +18,7 @@ export default function useUser() {
       }
     }
     // if i have user, i call the async function
-    if (user.uid) {
+    if (user) {
       getUserObjectByUserId();
     }
   }, [user]);

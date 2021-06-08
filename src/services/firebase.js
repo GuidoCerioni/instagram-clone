@@ -20,3 +20,7 @@ export async function getUserByUserId(uid) {
   // }));
   // return user;
 }
+export async function getSuggestedProfiles(userId) {
+  const result = await db.collection('users').limit(10).get();
+  return result.docs.map((profile) => profile.data());
+}

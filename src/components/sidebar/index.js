@@ -6,7 +6,6 @@ import User from './user';
 
 export default function Sidebar() {
   const { user } = useUser();
-  console.log(`user`, user);
   return (
     <div>
       <User username={user.username} fullName={user.fullName} />
