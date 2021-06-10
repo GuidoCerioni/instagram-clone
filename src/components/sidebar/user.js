@@ -17,6 +17,10 @@ const User = ({ username, fullName }) =>
           src={`/images/avatars/${fullName}.jpg`}
           className="rounded-full w-16"
           alt={`${fullName} profile picture`}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = '/images/users/userNotFound.png';
+          }}
         />
       </div>
       <div className="col-span-2 flex flex-col justify-evenly">
@@ -26,7 +30,7 @@ const User = ({ username, fullName }) =>
     </Link>
   );
 
-export default memo(User);
+export default User;
 
 User.propTypes = {
   username: PropTypes.string,
