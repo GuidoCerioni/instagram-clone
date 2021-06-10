@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 
 import * as ROUTES from '../constants/routes';
