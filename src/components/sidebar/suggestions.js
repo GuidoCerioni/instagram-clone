@@ -3,7 +3,11 @@ import { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { getSuggestedProfiles } from '../../services/firebase';
 import User from './user';
+<<<<<<< HEAD
 export default function Suggestions({ userId, following }) {
+=======
+export default function Suggestions({ userId }) {
+>>>>>>> 6401a493f19991eb155e5b81da533d905ed0551c
   const [profiles, setProfiles] = useState(null);
 
   useEffect(() => {
@@ -16,6 +20,7 @@ export default function Suggestions({ userId, following }) {
     if (userId) {
       suggestedProfiles();
     }
+<<<<<<< HEAD
   }, [userId, following]);
 
   if (!profiles) {
@@ -38,6 +43,24 @@ export default function Suggestions({ userId, following }) {
   } else {
     return null;
   }
+=======
+  }, [userId]);
+  return !profiles ? (
+    <Skeleton count={1} height={150} />
+  ) : (
+    <div>
+      {profiles.map((profile) => (
+        <>
+          <User
+            username={profile.username}
+            fullName={profile.fullName}
+            key={profile.email}
+          />
+        </>
+      ))}
+    </div>
+  );
+>>>>>>> 6401a493f19991eb155e5b81da533d905ed0551c
 }
 Suggestions.propTypes = {
   userId: PropTypes.string,
