@@ -14,8 +14,8 @@ const User = ({ username, fullName }) =>
     >
       <div className="col-span-1 flex items-center justify-between">
         <img
-          src={`/images/avatars/${fullName}.jpg`}
-          className="rounded-full w-16"
+          src={`/images/avatars/${username}.jpg`}
+          className="rounded-full w-16 h-16"
           alt={`${fullName} profile picture`}
           onError={(e) => {
             e.target.onerror = null;
@@ -30,7 +30,7 @@ const User = ({ username, fullName }) =>
     </Link>
   );
 
-export default User;
+export default memo(User);
 
 User.propTypes = {
   username: PropTypes.string,

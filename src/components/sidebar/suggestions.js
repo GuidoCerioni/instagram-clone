@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { getSuggestedProfiles } from '../../services/firebase';
-import User from './user';
+import SuggestedUser from './suggested-user';
 export default function Suggestions({ userId, following }) {
   const [profiles, setProfiles] = useState(null);
 
@@ -30,7 +30,10 @@ export default function Suggestions({ userId, following }) {
         </div>
         {profiles.map((profile, key) => (
           <div key={key}>
-            <User username={profile.username} fullName={profile.fullName} />
+            <SuggestedUser
+              username={profile.username}
+              fullName={profile.fullName}
+            />
           </div>
         ))}
       </div>

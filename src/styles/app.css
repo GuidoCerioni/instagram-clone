@@ -4598,6 +4598,11 @@ video {
   line-height: 1;
 }
 
+.text-m {
+  font-size: 0.935rem;
+  line-height: 1.33rem;
+}
+
 .leading-3 {
   line-height: .75rem;
 }
@@ -22350,6 +22355,11 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
+  .sm\:text-m {
+    font-size: 0.935rem;
+    line-height: 1.33rem;
+  }
+
   .sm\:leading-3 {
     line-height: .75rem;
   }
@@ -39961,6 +39971,11 @@ input:-webkit-autofill {
   .md\:text-9xl {
     font-size: 8rem;
     line-height: 1;
+  }
+
+  .md\:text-m {
+    font-size: 0.935rem;
+    line-height: 1.33rem;
   }
 
   .md\:leading-3 {
@@ -57576,6 +57591,11 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
+  .lg\:text-m {
+    font-size: 0.935rem;
+    line-height: 1.33rem;
+  }
+
   .lg\:leading-3 {
     line-height: .75rem;
   }
@@ -75187,6 +75207,11 @@ input:-webkit-autofill {
   .xl\:text-9xl {
     font-size: 8rem;
     line-height: 1;
+  }
+
+  .xl\:text-m {
+    font-size: 0.935rem;
+    line-height: 1.33rem;
   }
 
   .xl\:leading-3 {
@@ -92802,6 +92827,11 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
+  .\32xl\:text-m {
+    font-size: 0.935rem;
+    line-height: 1.33rem;
+  }
+
   .\32xl\:leading-3 {
     line-height: .75rem;
   }
@@ -110413,6 +110443,11 @@ input:-webkit-autofill {
   .phone\:text-9xl {
     font-size: 8rem;
     line-height: 1;
+  }
+
+  .phone\:text-m {
+    font-size: 0.935rem;
+    line-height: 1.33rem;
   }
 
   .phone\:leading-3 {

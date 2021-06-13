@@ -25,9 +25,13 @@ module.exports = {
       screens: {
         phone: '450px',
       },
+
       maxWidth: {
         xxxs: '11rem',
         xxs: '15rem',
+      },
+      fontSize: {
+        m: ['0.935rem', '1.33rem'],
       },
     },
   },
