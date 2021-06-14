@@ -1,9 +1,26 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import { updateFollowing } from '../../services/firebase';
+import { updateFollowers } from '../../services/firebase';
 
-const SuggestedUser = ({ username, fullName }) => {
+const SuggestedUser = ({
+  username,
+  fullName,
+  suggestedUserId,
+  suggestedUserDocId,
+  loggedUserDocId,
+}) => {
   const splittedFullName = fullName.split(/(\s+)/);
+  const [followed, setFollowed] = useState(false);
+
+  async function handleFollowUser() {
+    setFollowed(true);
+    updateFollowing(loggedUserDocId, suggestedUserId, false);
+  }
+
   return !username || !fullName ? (
     <Skeleton count={1} height={61} />
   ) : (
@@ -49,4 +66,7 @@ export default SuggestedUser;
 SuggestedUser.propTypes = {
   username: PropTypes.string,
   fullName: PropTypes.string,
+  suggestedUserId: PropTypes.string,
+  suggestedUserDocId: PropTypes.string,
+  loggedUserDocId: PropTypes.string,
 };

@@ -19,7 +19,7 @@ export default function Dashoard() {
         <Header />
         <div
           className="grid grid-cols-4
-      container mx-auto max-w-screen-lg h-full"
+      container p-5 mx-auto max-w-screen-lg h-full"
         >
           <div className="col-span-3">
             <Timeline />

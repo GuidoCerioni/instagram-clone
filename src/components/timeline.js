@@ -1,6 +1,6 @@
 export default function Timeline() {
   return (
-    <div className="container">
+    <div className="text-blue">
       <p>im timeline</p>
     </div>
   );
