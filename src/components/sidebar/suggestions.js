@@ -25,7 +25,7 @@ export default function Suggestions({
   console.log(`profiles`, profiles);
   if (!profiles) {
     return <Skeleton count={1} height={150} />;
-  } else if (profiles.length > 1) {
+  } else if (profiles.length > 0) {
     return (
       <div className="rounded flex flex-col">
         <div className="flex justify-center content-center my-3">

@@ -15,6 +15,7 @@ export default function SuggestedUser({
   loggedUserDocId,
 }) {
   const splittedFullName = fullName.split(/(\s+)/);
+
   const [followed, setFollowed] = useState(false);
   const [followedUserButtonText, setFollowedUserButtonText] = useState(
     'Follow'
@@ -25,6 +26,15 @@ export default function SuggestedUser({
     await updateFollowing(loggedUserDocId, suggestedUserId, false);
     await updateFollowers(loggedUserId, suggestedUserDocId, false);
     setFollowedUserButtonText('Unfollow');
+  }
+  async function handleUnfollowUser() {
+    setFollowed(false);
+    await updateFollowing(loggedUserDocId, suggestedUserId, true);
+    await updateFollowers(loggedUserId, suggestedUserDocId, true);
+    setFollowedUserButtonText('Follow');
+  }
+  function handleFollowButton() {
+    followed ? handleUnfollowUser() : handleFollowUser();
   }
 
   return !username || !fullName ? (
@@ -46,9 +56,12 @@ export default function SuggestedUser({
         <div className="flex flex-col justify-evenly">
           <p className="text-sm font-bold">
             {`${splittedFullName[0]}` /* first name */}
-            {splittedFullName[2] /* last name (if exist) */ ? (
-              <span>{` ${splittedFullName[2]}`}</span>
-            ) : null}
+            {
+              /* last name (if exist) */
+              splittedFullName[2] ? (
+                <span>{` ${splittedFullName[2]}`}</span>
+              ) : null
+            }
           </p>
           <p className="text-xs ">{`@${username}`}</p>
         </div>
@@ -56,7 +69,7 @@ export default function SuggestedUser({
       <button
         type="button"
         className="text-m text-blue-medium  hover:text-blue-mediumHover"
-        onClick={handleFollowUser}
+        onClick={handleFollowButton}
       >
         {followedUserButtonText}
       </button>
