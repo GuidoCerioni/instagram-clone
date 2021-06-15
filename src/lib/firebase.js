@@ -5,7 +5,7 @@ import 'firebase/auth';
 // here import seed files
 // import { seedDatabase } from '../seed';
 
-const config = {
+const firebaseConfig = {
   apiKey: 'AIzaSyB0YjJRL-vS_LpMebxMuoXUlwI8sGesUMY',
   authDomain: 'instagram-clone-44867.firebaseapp.com',
   projectId: 'instagram-clone-44867',
@@ -14,7 +14,7 @@ const config = {
   appId: '1:228101567034:web:96301e09a6ef3410e4fb03',
 };
 
-const firebase = Firebase.initializeApp(config);
+const firebase = Firebase.initializeApp(firebaseConfig);
 const { FieldValue } = Firebase.firestore;
 
 // here call seed file ONLY ONCE

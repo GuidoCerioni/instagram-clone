@@ -12,6 +12,7 @@ export default function Sidebar() {
       <Suggestions
         userId={user.userId}
         following={user.following}
+        loggedUserId={user.userId}
         loggedUserDocId={user.docId}
       />
     </div>

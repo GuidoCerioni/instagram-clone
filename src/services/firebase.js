@@ -1,4 +1,5 @@
-import { firebase, FielValue, FieldValue } from '../lib/firebase';
+/* eslint-disable operator-linebreak */
+import { firebase, FieldValue } from '../lib/firebase';
 
 const db = firebase.firestore();
 
@@ -49,56 +50,29 @@ export async function updateFollowing(
 ) {
   // Toogle following user array (if not following, follow.
   // if following, unfollow
-  /*
   return db
     .collection('users')
     .doc(loggedUserDocId)
     .update({
-      following: isFollowing ? // true=>unfollow. false=>follow
-        FieldValue.arrayRemove(profileId) :
-        FieldValue.arrayUnion(profileId),
+      // (isFollowing) true=>unfollow. false=>follow
+      following: isFollowing
+        ? FieldValue.arrayRemove(profileId)
+        : FieldValue.arrayUnion(profileId),
     });
-  */
-  const ref = await db.collection('users').doc(loggedUserDocId);
-  if (isFollowing) {
-    const removeField = await ref.update({
-      following: firebase.firestore.FieldValue.arrayRemove(profileId),
-    });
-    return removeField;
-  } else {
-    const addField = ref.update({
-      following: firebase.firestore.FieldValue.arrayUnion(profileId),
-    });
-    return addField;
-  }
 }
 export async function updateFollowers(
-  loggedUserDocId,
-  profileId,
+  loggedUserId, // logged in user id
+  suggestedUserDocId, // profile DOC id i followed
   isFollowing // true/false
 ) {
   // Toogle following user array (if not following, follow.
   // if following, unfollow
-  /*
   return db
     .collection('users')
-    .doc(loggedUserDocId)
+    .doc(suggestedUserDocId)
     .update({
-      following: isFollowing ? // true=>unfollow. false=>follow
-        FieldValue.arrayRemove(profileId) :
-        FieldValue.arrayUnion(profileId),
+      followers: isFollowing // true=>unfollow. false=>follow
+        ? FieldValue.arrayRemove(loggedUserId)
+        : FieldValue.arrayUnion(loggedUserId),
     });
-  */
-  const ref = await db.collection('users').doc(loggedUserDocId);
-  if (isFollowing) {
-    const removeField = await ref.update({
-      followers: firebase.firestore.FieldValue.arrayRemove(profileId),
-    });
-    return removeField;
-  } else {
-    const addField = ref.update({
-      followers: firebase.firestore.FieldValue.arrayUnion(profileId),
-    });
-    return addField;
-  }
 }

@@ -11,6 +11,7 @@ const SuggestedUser = ({
   fullName,
   suggestedUserId,
   suggestedUserDocId,
+  loggedUserId,
   loggedUserDocId,
 }) => {
   const splittedFullName = fullName.split(/(\s+)/);
@@ -18,7 +19,8 @@ const SuggestedUser = ({
 
   async function handleFollowUser() {
     setFollowed(true);
-    updateFollowing(loggedUserDocId, suggestedUserId, false);
+    await updateFollowing(loggedUserDocId, suggestedUserId, false);
+    await updateFollowers(loggedUserId, suggestedUserDocId, false);
   }
 
   return !username || !fullName ? (
@@ -50,10 +52,7 @@ const SuggestedUser = ({
       <button
         type="button"
         className="text-m text-blue-medium  hover:text-blue-mediumHover"
-        onClick={(e) => {
-          // e.preventDefault();
-          console.log('following');
-        }}
+        onClick={handleFollowUser}
       >
         Follow
       </button>
@@ -64,9 +63,10 @@ const SuggestedUser = ({
 export default SuggestedUser;
 
 SuggestedUser.propTypes = {
-  username: PropTypes.string,
-  fullName: PropTypes.string,
-  suggestedUserId: PropTypes.string,
-  suggestedUserDocId: PropTypes.string,
-  loggedUserDocId: PropTypes.string,
+  username: PropTypes.string.isRequired,
+  fullName: PropTypes.string.isRequired,
+  suggestedUserId: PropTypes.string.isRequired,
+  suggestedUserDocId: PropTypes.string.isRequired,
+  loggedUserId: PropTypes.string.isRequired,
+  loggedUserDocId: PropTypes.string.isRequired,
 };
