@@ -6,21 +6,25 @@ import Skeleton from 'react-loading-skeleton';
 import { updateFollowing } from '../../services/firebase';
 import { updateFollowers } from '../../services/firebase';
 
-const SuggestedUser = ({
+export default function SuggestedUser({
   username,
   fullName,
   suggestedUserId,
   suggestedUserDocId,
   loggedUserId,
   loggedUserDocId,
-}) => {
+}) {
   const splittedFullName = fullName.split(/(\s+)/);
   const [followed, setFollowed] = useState(false);
+  const [followedUserButtonText, setFollowedUserButtonText] = useState(
+    'Follow'
+  );
 
   async function handleFollowUser() {
     setFollowed(true);
     await updateFollowing(loggedUserDocId, suggestedUserId, false);
     await updateFollowers(loggedUserId, suggestedUserDocId, false);
+    setFollowedUserButtonText('Unfollow');
   }
 
   return !username || !fullName ? (
@@ -54,13 +58,11 @@ const SuggestedUser = ({
         className="text-m text-blue-medium  hover:text-blue-mediumHover"
         onClick={handleFollowUser}
       >
-        Follow
+        {followedUserButtonText}
       </button>
     </div>
   );
-};
-
-export default SuggestedUser;
+}
 
 SuggestedUser.propTypes = {
   username: PropTypes.string.isRequired,
