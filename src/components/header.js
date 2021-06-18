@@ -53,7 +53,7 @@ export default function Header() {
                     </svg>
                   </button>
                 </Link>
-                <Link to={ROUTES.DASHBOARD}>
+                <Link to={ROUTES.LOGIN}>
                   <button
                     type="button"
                     title="Sign Out"

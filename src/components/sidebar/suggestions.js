@@ -22,7 +22,7 @@ export default function Suggestions({
       suggestedProfiles();
     }
   }, [userId, following]);
-  console.log(`profiles`, profiles);
+
   if (!profiles) {
     return <Skeleton count={1} height={150} />;
   } else if (profiles.length > 0) {
