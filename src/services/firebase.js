@@ -76,3 +76,26 @@ export async function updateFollowers(
         : FieldValue.arrayUnion(loggedUserId),
     });
 }
+export async function getPhotos(userId, following) {
+  const response = await db
+    .collection('photos')
+    .where('userId', 'in', following)
+    .get();
+
+  const userFollowedPhotos = response.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id,
+  }));
+
+  const photosWithDetails = Promise.all(
+    userFollowedPhotos.map(async (photo) => {
+      const { username } = await getUserByUserId(photo.userId);
+      let userLikedPhoto = false;
+      if (photo.likes.includes(userId)) {
+        userLikedPhoto = true;
+      }
+      return { username, ...photo, userLikedPhoto };
+    })
+  );
+  return photosWithDetails;
+}

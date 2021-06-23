@@ -22,7 +22,7 @@ export default function Dashboard({ user }) {
         <div className="bg-gray-background">
           <Header />
           <div
-            className="grid grid-cols-4
+            className="grid grid-cols-4 gap-6
       container p-5 mx-auto max-w-screen-lg h-full"
           >
             <div className="col-span-3">
