@@ -28,12 +28,10 @@ export default function App() {
           }
         >
           <Switch>
-            <Route exact path={ROUTES.DASHBOARD}>
-              <Dashboard user={user} />
-            </Route>
+            <Route exact path={ROUTES.DASHBOARD} component={Dashboard} />
             <Route path={ROUTES.LOGIN} component={Login} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
-            <Route component={NotFound} />
+            <Route path={ROUTES.NOT_FOUND} component={NotFound} />
           </Switch>
         </Suspense>
       </Router>

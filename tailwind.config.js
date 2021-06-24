@@ -33,6 +33,9 @@ module.exports = {
       fontSize: {
         m: ['0.935rem', '1.33rem'],
       },
+      inset: {
+        '1/5': '20%',
+      },
     },
   },
 };

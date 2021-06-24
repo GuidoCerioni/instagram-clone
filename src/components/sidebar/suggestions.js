@@ -34,16 +34,15 @@ export default function Suggestions({
           </p>
         </div>
         {profiles.map((profile, key) => (
-          <div key={key}>
-            <SuggestedUser
-              username={profile.username}
-              fullName={profile.fullName}
-              suggestedUserId={profile.userId}
-              suggestedUserDocId={profile.docId}
-              loggedUserId={loggedUserId}
-              loggedUserDocId={loggedUserDocId}
-            />
-          </div>
+          <SuggestedUser
+            key={key}
+            username={profile.username}
+            fullName={profile.fullName}
+            suggestedUserId={profile.userId}
+            suggestedUserDocId={profile.docId}
+            loggedUserId={loggedUserId}
+            loggedUserDocId={loggedUserDocId}
+          />
         ))}
       </div>
     );
@@ -52,8 +51,8 @@ export default function Suggestions({
   }
 }
 Suggestions.propTypes = {
-  userId: PropTypes.string.isRequired,
-  following: PropTypes.array.isRequired,
-  loggedUserDocId: PropTypes.string.isRequired,
-  loggedUserId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+  following: PropTypes.array,
+  loggedUserDocId: PropTypes.string,
+  loggedUserId: PropTypes.string,
 };
