@@ -12,11 +12,11 @@ export default function Timeline() {
   const { photos } = usePhotos();
 
   if (!photos) {
-    return <Skeleton className="max-w-xl" count={4} height={320} />;
+    return <Skeleton count={4} height={550} width={610} />;
   } else if (photos.length > 0) {
     return photos.map((content, key) => {
       return (
-        <div className="max-w-xl" key={key}>
+        <div key={key}>
           <Post content={content} />
         </div>
       );

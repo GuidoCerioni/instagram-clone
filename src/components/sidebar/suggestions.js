@@ -26,13 +26,13 @@ export default function Suggestions({
   if (!profiles) {
     return <Skeleton count={1} height={150} />;
   } else if (profiles.length > 0) {
+    console.log(`profiles`, profiles);
     return (
       <div className="rounded flex flex-col">
-        <div className="flex justify-center content-center my-3">
-          <p className="text-sm font-bold text-gray-base">
-            Suggestions for you
-          </p>
-        </div>
+        <p className="py-4 text-sm font-semibold text-gray-base">
+          Suggestions For You
+        </p>
+
         {profiles.map((profile, key) => (
           <SuggestedUser
             key={key}

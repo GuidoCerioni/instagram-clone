@@ -40,8 +40,11 @@ export default function SuggestedUser({
   return !username || !fullName ? (
     <Skeleton count={1} height={61} />
   ) : (
-    <div className="flex justify-between">
-      <Link to={`/p/${username}`} className="flex justify-between p-2">
+    <div className="flex justify-between items-center">
+      <Link
+        to={`/p/${username}`}
+        className="flex items-center justify-between py-2 pr-2"
+      >
         <div className="mr-3">
           <img
             src={`/images/avatars/${username}.jpg`}
@@ -68,7 +71,8 @@ export default function SuggestedUser({
       </Link>
       <button
         type="button"
-        className="text-m text-blue-medium  hover:text-blue-mediumHover"
+        className="text-sm font-semibold
+        text-blue-medium  hover:text-blue-mediumHover"
         onClick={handleFollowButton}
       >
         {followedUserButtonText}

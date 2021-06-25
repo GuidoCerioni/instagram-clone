@@ -25,13 +25,20 @@ export default function Dashboard() {
         <Header />
         <div
           className="flex justify-center relative
-      container p-5 mx-auto max-w-screen-lg h-full"
+          container px-5 mx-auto max-w-screen-lg h-full
+          lg:justify-between"
         >
-          <div className="col-span-4 lg:col-span-3">
+          <div className="max-w-615">
             <Timeline />
           </div>
-          <div className="col-span-1 lg:hidden flex-grow"></div>
-          <div className="hidden right-1/5 lg:fixed">
+          <div
+            className="w-72 hidden sidebar lg:block
+           xl:right-1/6 2xl:right-1/4"
+          ></div>
+          <div
+            className="w-72 hidden top-105 sidebar lg:fixed lg:block
+           xl:right-1/6 2xl:right-1/4"
+          >
             <Sidebar />
           </div>
         </div>
