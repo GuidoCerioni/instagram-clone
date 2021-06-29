@@ -100,7 +100,6 @@ export async function getPhotos(userId, following) {
   return photosWithDetails;
 }
 export async function updateLikes(toogleLike, photoDocId, loggedUserId) {
-  console.log(`toogleLike`, toogleLike);
   return db
     .collection('photos')
     .doc(photoDocId)
@@ -108,5 +107,13 @@ export async function updateLikes(toogleLike, photoDocId, loggedUserId) {
       likes: toogleLike // true=>unlike. false=>like
         ? FieldValue.arrayRemove(loggedUserId)
         : FieldValue.arrayUnion(loggedUserId),
+    });
+}
+export async function updateComents(photoDocId, displayName, comment) {
+  return db
+    .collection('photos')
+    .doc(photoDocId)
+    .update({
+      comments: FieldValue.arrayUnion({ comment, displayName }),
     });
 }

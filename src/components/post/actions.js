@@ -25,7 +25,7 @@ export default function Actions({
   }
 
   return (
-    <div className="py-4 flex flex-col ">
+    <div className="pt-4 pb-1 flex flex-col ">
       <div className="flex mb-2">
         {!toogleLike ? (
           <button
@@ -59,7 +59,7 @@ export default function Actions({
             </svg>
           </button>
         )}
-        <button className="mr-4 focus:outline-none">
+        <button className="mr-4 focus:outline-none" onClick={handleFocus}>
           <svg
             className="cursor-pointer "
             aria-label="Like"
@@ -76,7 +76,7 @@ export default function Actions({
         </button>
         <button>
           <svg
-            className="cursor-pointer "
+            className="cursor-pointer"
             aria-label="Like"
             fill="#262626"
             height="24"
@@ -95,6 +95,6 @@ Actions.propTypes = {
   totalLikes: PropTypes.number,
   photoLiked: PropTypes.bool,
   photoDocId: PropTypes.string,
-  handleFocus: PropTypes.string,
+  handleFocus: PropTypes.func,
   loggedUserId: PropTypes.string,
 };
