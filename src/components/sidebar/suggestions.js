@@ -26,7 +26,6 @@ export default function Suggestions({
   if (!profiles) {
     return <Skeleton count={1} height={150} />;
   } else if (profiles.length > 0) {
-    console.log(`profiles`, profiles);
     return (
       <div className="rounded flex flex-col">
         <p className="py-4 text-sm font-semibold text-gray-base">

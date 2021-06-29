@@ -99,3 +99,14 @@ export async function getPhotos(userId, following) {
   );
   return photosWithDetails;
 }
+export async function updateLikes(toogleLike, photoDocId, loggedUserId) {
+  console.log(`toogleLike`, toogleLike);
+  return db
+    .collection('photos')
+    .doc(photoDocId)
+    .update({
+      likes: toogleLike // true=>unlike. false=>like
+        ? FieldValue.arrayRemove(loggedUserId)
+        : FieldValue.arrayUnion(loggedUserId),
+    });
+}

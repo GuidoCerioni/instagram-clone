@@ -17,21 +17,23 @@ export default function SuggestedUser({
   const splittedFullName = fullName.split(/(\s+)/);
 
   const [followed, setFollowed] = useState(false);
-  const [followedUserButtonText, setFollowedUserButtonText] = useState(
-    'Follow'
-  );
 
   async function handleFollowUser() {
+    // TODO: revisar eficiencia de los llamados promise.all
     setFollowed(true);
-    await updateFollowing(loggedUserDocId, suggestedUserId, false);
-    await updateFollowers(loggedUserId, suggestedUserDocId, false);
-    setFollowedUserButtonText('Unfollow');
+
+    async function promiseFollowing() {
+      await updateFollowing(loggedUserDocId, suggestedUserId, false);
+    }
+    async function promiseFollowers() {
+      await updateFollowers(loggedUserId, suggestedUserDocId, false);
+    }
+    Promise.all([promiseFollowing(), promiseFollowers()]);
   }
   async function handleUnfollowUser() {
     setFollowed(false);
     await updateFollowing(loggedUserDocId, suggestedUserId, true);
     await updateFollowers(loggedUserId, suggestedUserDocId, true);
-    setFollowedUserButtonText('Follow');
   }
   function handleFollowButton() {
     followed ? handleUnfollowUser() : handleFollowUser();
@@ -75,7 +77,7 @@ export default function SuggestedUser({
         text-blue-medium  hover:text-blue-mediumHover"
         onClick={handleFollowButton}
       >
-        {followedUserButtonText}
+        {followed ? 'Unfollow' : 'Follow'}
       </button>
     </div>
   );

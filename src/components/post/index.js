@@ -1,16 +1,29 @@
+import { useContext } from 'react';
+import UserContext from '../../context/user';
 import PropTypes from 'prop-types';
-import PostFooter from './footer';
+import Actions from './actions';
 import PostHeader from './header';
 import PostPhoto from './photo';
 
 export default function Post({ content }) {
   // header, photo,buttons, footer
-  //  console.log(`content`, content.username);
+  const {
+    user: { uid: loggedUserId },
+  } = useContext(UserContext);
+
+  const photoLiked = content.likes.includes(loggedUserId);
+
   return (
-    <div className="border border-gray-primary rounded mb-8">
+    <div className="mb-8 bg-white border border-gray-primary rounded ">
       <PostHeader username={content.username} />
       <PostPhoto imageSrc={content.imageSrc} />
-      <PostFooter />
+      <Actions
+        totalLikes={content.likes.length}
+        photoLiked={photoLiked}
+        photoDocId={content.docId}
+        handleFocus={'asd'}
+        loggedUserId={loggedUserId}
+      />
     </div>
   );
 }

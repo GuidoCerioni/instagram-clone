@@ -1,7 +1,10 @@
 /* eslint-disable quote-props */
 module.exports = {
   theme: {
-    fill: (theme) => ({ red: theme('colors.red.primary') }),
+    fill: (theme) => ({
+      red: theme('colors.red.primary'),
+      white: theme('colors.white'),
+    }),
     colors: {
       white: '#ffffff',
       blue: {
