@@ -40,6 +40,7 @@ module.exports = {
         '615': '615px',
       },
       fontSize: {
+        xxs: ['0.625rem', '1rem'],
         m: ['0.935rem', '1.33rem'],
       },
       inset: {

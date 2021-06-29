@@ -4602,6 +4602,11 @@ video {
   line-height: 1;
 }
 
+.text-xxs {
+  font-size: 0.625rem;
+  line-height: 1rem;
+}
+
 .text-m {
   font-size: 0.935rem;
   line-height: 1.33rem;
@@ -22466,6 +22471,11 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
+  .sm\:text-xxs {
+    font-size: 0.625rem;
+    line-height: 1rem;
+  }
+
   .sm\:text-m {
     font-size: 0.935rem;
     line-height: 1.33rem;
@@ -40189,6 +40199,11 @@ input:-webkit-autofill {
   .md\:text-9xl {
     font-size: 8rem;
     line-height: 1;
+  }
+
+  .md\:text-xxs {
+    font-size: 0.625rem;
+    line-height: 1rem;
   }
 
   .md\:text-m {
@@ -57916,6 +57931,11 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
+  .lg\:text-xxs {
+    font-size: 0.625rem;
+    line-height: 1rem;
+  }
+
   .lg\:text-m {
     font-size: 0.935rem;
     line-height: 1.33rem;
@@ -75639,6 +75659,11 @@ input:-webkit-autofill {
   .xl\:text-9xl {
     font-size: 8rem;
     line-height: 1;
+  }
+
+  .xl\:text-xxs {
+    font-size: 0.625rem;
+    line-height: 1rem;
   }
 
   .xl\:text-m {
@@ -93366,6 +93391,11 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
+  .\32xl\:text-xxs {
+    font-size: 0.625rem;
+    line-height: 1rem;
+  }
+
   .\32xl\:text-m {
     font-size: 0.935rem;
     line-height: 1.33rem;
@@ -111089,6 +111119,11 @@ input:-webkit-autofill {
   .phone\:text-9xl {
     font-size: 8rem;
     line-height: 1;
+  }
+
+  .phone\:text-xxs {
+    font-size: 0.625rem;
+    line-height: 1rem;
   }
 
   .phone\:text-m {

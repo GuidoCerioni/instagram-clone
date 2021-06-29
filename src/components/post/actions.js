@@ -25,7 +25,7 @@ export default function Actions({
   }
 
   return (
-    <div className="p-4 flex flex-col ">
+    <div className="py-4 flex flex-col ">
       <div className="flex mb-2">
         {!toogleLike ? (
           <button

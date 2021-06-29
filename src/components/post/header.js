@@ -6,7 +6,7 @@ export default function PostHeader({ username }) {
   return (
     <div
       className="flex justify-between items-center
-      h-60 p-4 border-b border-gray-primary"
+      h-60  border-b border-gray-primary"
     >
       <div className="flex items-center">
         <Link to={`/p/${username}`} className="mr-5">
