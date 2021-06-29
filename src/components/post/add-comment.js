@@ -12,15 +12,26 @@ export default function AddComment({
   photoDocId,
 }) {
   const [comment, setComment] = useState('');
+  const [loaderDisplay, setloaderDisplay] = useState('hidden');
   const {
     user: { displayName },
   } = useContext(UserContext);
 
   async function handleComment(e) {
     e.preventDefault();
-    await updateComents(photoDocId, displayName, comment);
-    setComments([{ comment: comment, displayName: displayName }, ...comments]);
-    setComment('');
+    try {
+      setloaderDisplay('inline-block');
+      await updateComents(photoDocId, displayName, comment);
+      setComments([
+        { comment: comment, displayName: displayName },
+        ...comments,
+      ]);
+      setComment('');
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setloaderDisplay('hidden');
+    }
   }
   return (
     <form
@@ -28,7 +39,7 @@ export default function AddComment({
       method="POST"
       id="add-comment"
       autoComplete="new-comment"
-      className="px-4 py-4 flex border-t border-gray-primary"
+      className="px-4 py-4 flex items-center border-t border-gray-primary"
     >
       <svg
         aria-label="emoji"
@@ -52,11 +63,17 @@ export default function AddComment({
         onChange={({ target }) => setComment(target.value)}
         ref={commentInput}
       />
-      <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
+      <Loader
+        className={`${loaderDisplay} `}
+        type="TailSpin"
+        color="#0082FF"
+        height={16}
+        width={16}
+      />
       <button
         disabled={comment.length < 1}
         type="submit"
-        className={`text-sm font-semibold
+        className={`text-sm font-semibold ml-3
           text-blue-medium  hover:text-blue-medium focus:outline-none
           ${!comment && 'opacity-40'}`}
       >
