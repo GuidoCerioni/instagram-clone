@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import PropTypes from 'prop-types';
 import { useState, useContext } from 'react';
+import Loader from 'react-loader-spinner';
 import UserContext from '../../context/user';
 import { updateComents } from '../../services/firebase';
 
@@ -51,6 +52,7 @@ export default function AddComment({
         onChange={({ target }) => setComment(target.value)}
         ref={commentInput}
       />
+      <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
       <button
         disabled={comment.length < 1}
         type="submit"
