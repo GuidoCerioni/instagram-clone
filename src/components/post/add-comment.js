@@ -42,6 +42,7 @@ export default function AddComment({
       className="px-4 py-4 flex items-center border-t border-gray-primary"
     >
       <svg
+        cursor="pointer"
         aria-label="emoji"
         fill="#262626"
         height="24"
@@ -74,7 +75,7 @@ export default function AddComment({
         disabled={comment.length < 1}
         type="submit"
         className={`text-sm font-semibold ml-3
-          text-blue-medium  hover:text-blue-medium focus:outline-none
+          text-blue-medium  hover:text-blue-mediumHover focus:outline-none
           ${!comment && 'opacity-40'}`}
       >
         Post

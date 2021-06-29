@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import Loader from 'react-loader-spinner';
 import { updateFollowing } from '../../services/firebase';
 import { updateFollowers } from '../../services/firebase';
 
@@ -17,24 +18,34 @@ export default function SuggestedUser({
   const splittedFullName = fullName.split(/(\s+)/);
 
   const [followed, setFollowed] = useState(false);
+  const [loaderDisplay, setloaderDisplay] = useState('hidden');
 
   async function handleFollowUser() {
-    // TODO: revisar eficiencia de los llamados promise.all
-    setFollowed(true);
-
-    async function promiseFollowing() {
+    try {
+      setloaderDisplay('inline-block');
       await updateFollowing(loggedUserDocId, suggestedUserId, false);
-    }
-    async function promiseFollowers() {
       await updateFollowers(loggedUserId, suggestedUserDocId, false);
+      setFollowed(true);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setloaderDisplay('hidden');
     }
-    Promise.all([promiseFollowing(), promiseFollowers()]);
   }
+
   async function handleUnfollowUser() {
-    setFollowed(false);
-    await updateFollowing(loggedUserDocId, suggestedUserId, true);
-    await updateFollowers(loggedUserId, suggestedUserDocId, true);
+    try {
+      setloaderDisplay('inline-block');
+      await updateFollowing(loggedUserDocId, suggestedUserId, true);
+      await updateFollowers(loggedUserId, suggestedUserDocId, true);
+      setFollowed(false);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setloaderDisplay('hidden');
+    }
   }
+
   function handleFollowButton() {
     followed ? handleUnfollowUser() : handleFollowUser();
   }
@@ -71,14 +82,23 @@ export default function SuggestedUser({
           <p className="text-xs ">{`@${username}`}</p>
         </div>
       </Link>
-      <button
-        type="button"
-        className="text-sm font-semibold
+      <div className="flex items-center">
+        <Loader
+          className={`${loaderDisplay} `}
+          type="TailSpin"
+          color="#0082F6"
+          height={18}
+          width={18}
+        />
+        <button
+          type="button"
+          className="text-sm font-semibold ml-2
         text-blue-medium  hover:text-blue-mediumHover"
-        onClick={handleFollowButton}
-      >
-        {followed ? 'Unfollow' : 'Follow'}
-      </button>
+          onClick={handleFollowButton}
+        >
+          {followed ? 'Unfollow' : 'Follow'}
+        </button>
+      </div>
     </div>
   );
 }
