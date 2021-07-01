@@ -14,13 +14,11 @@ export default function Timeline() {
   if (!photos) {
     return <Skeleton count={4} height={550} width={610} />;
   } else if (photos.length > 0) {
-    return photos.map((content, key) => {
-      return (
-        <div key={key}>
-          <Post content={content} />
-        </div>
-      );
-    });
+    return photos.map((content, key) => (
+      <div key={key}>
+        <Post content={content} />
+      </div>
+    ));
   } else {
     return (
       <p className="text-2xl text-center">
