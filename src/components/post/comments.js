@@ -10,7 +10,9 @@ export default function Comments({
   photoDocId,
   commentInput,
 }) {
-  const [comments, setComments] = useState(allComments);
+  const [comments, setComments] = useState(allComments.slice(0, 22)); // 22 max number of comments
+  const [commentsDisplay, setCommentsDisplay] = useState('hidden');
+  const [viewAllButtonDisplay, setViweAllButtonDisplay] = useState('block');
 
   function calculateDaysCreatedAgo() {
     const date = new Date(dateCreated);
@@ -33,23 +35,55 @@ export default function Comments({
       return `${daysDifference} day ago`;
     }
   }
+  function handleViewAllComments() {
+    if (commentsDisplay === 'hidden') {
+      setCommentsDisplay('block');
+      setViweAllButtonDisplay('hidden');
+    } else {
+      setCommentsDisplay('hidden');
+      setViweAllButtonDisplay('block');
+    }
+  }
 
   return (
     <>
       <div className="px-4">
         {comments.length > 3 ? (
-          <p className="text-sm text-gray-base ">
-            {`View all ${comments.length} comments`}
-          </p>
+          <>
+            <button
+              className={`${viewAllButtonDisplay} text-sm text-gray-base`}
+              onClick={handleViewAllComments}
+            >
+              {`View all ${comments.length} comments`}
+            </button>
+            <button
+              className={`${
+                viewAllButtonDisplay === 'hidden' ? 'block' : 'hidden'
+              } text-sm text-gray-base`}
+              onClick={handleViewAllComments}
+            >
+              {`Hide comments`}
+            </button>
+          </>
         ) : null}
-        {comments.slice(0, 3).map((item, key) => (
-          <div key={key} className=" text-sm pt-1">
+        {comments.slice(0, comments.length - 3).map((item, key) => (
+          <div key={key} className={`${commentsDisplay} text-sm pt-1`}>
             <Link to={`/p/${item.displayName}`}>
               <span className="font-semibold">{`${item.displayName} `}</span>
             </Link>
             <span>{`${item.comment}`}</span>
           </div>
         ))}
+        {comments
+          .slice(comments.length - 3, comments.length)
+          .map((item, key) => (
+            <div key={key} className=" text-sm pt-1">
+              <Link to={`/p/${item.displayName}`}>
+                <span className="font-semibold">{`${item.displayName} `}</span>
+              </Link>
+              <span>{`${item.comment}`}</span>
+            </div>
+          ))}
       </div>
 
       <p className="px-4 py-2 text-xxs uppercase text-gray-base ">
