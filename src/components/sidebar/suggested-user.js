@@ -18,31 +18,31 @@ export default function SuggestedUser({
   const splittedFullName = fullName.split(/(\s+)/);
 
   const [followed, setFollowed] = useState(false);
-  const [loaderDisplay, setloaderDisplay] = useState('hidden');
+  const [loaderDisplay, setLoaderDisplay] = useState('hidden');
 
   async function handleFollowUser() {
     try {
-      setloaderDisplay('inline-block');
+      setLoaderDisplay('inline-block');
       await updateFollowing(loggedUserDocId, suggestedUserId, false);
       await updateFollowers(loggedUserId, suggestedUserDocId, false);
       setFollowed(true);
     } catch (err) {
       console.error(err);
     } finally {
-      setloaderDisplay('hidden');
+      setLoaderDisplay('hidden');
     }
   }
 
   async function handleUnfollowUser() {
     try {
-      setloaderDisplay('inline-block');
+      setLoaderDisplay('inline-block');
       await updateFollowing(loggedUserDocId, suggestedUserId, true);
       await updateFollowers(loggedUserId, suggestedUserDocId, true);
       setFollowed(false);
     } catch (err) {
       console.error(err);
     } finally {
-      setloaderDisplay('hidden');
+      setLoaderDisplay('hidden');
     }
   }
 

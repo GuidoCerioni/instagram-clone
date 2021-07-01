@@ -12,7 +12,7 @@ export default function AddComment({
   photoDocId,
 }) {
   const [comment, setComment] = useState('');
-  const [loaderDisplay, setloaderDisplay] = useState('hidden');
+  const [loaderDisplay, setLoaderDisplay] = useState('hidden');
   const {
     user: { displayName },
   } = useContext(UserContext);
@@ -20,17 +20,17 @@ export default function AddComment({
   async function handleComment(e) {
     e.preventDefault();
     try {
-      setloaderDisplay('inline-block');
+      setLoaderDisplay('inline-block');
       await updateComents(photoDocId, displayName, comment);
       setComments([
-        { comment: comment, displayName: displayName },
         ...comments,
+        { comment: comment, displayName: displayName },
       ]);
       setComment('');
     } catch (err) {
       console.error(err);
     } finally {
-      setloaderDisplay('hidden');
+      setLoaderDisplay('hidden');
     }
   }
   return (
