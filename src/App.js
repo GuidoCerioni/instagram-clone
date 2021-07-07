@@ -2,6 +2,7 @@ import react, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
+import ProtectedRoute from './helpers/protected-route';
 import useAuthListener from './hooks/use-auth-listener';
 
 const Login = lazy(() => import('./pages/login'));
@@ -28,7 +29,9 @@ export default function App() {
           }
         >
           <Switch>
-            <Route exact path={ROUTES.DASHBOARD} component={Dashboard} />
+            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
+              <Dashboard />
+            </ProtectedRoute>
             <Route path={ROUTES.LOGIN} component={Login} />
             <Route path={ROUTES.SIGN_UP} component={SignUp} />
             <Route path={ROUTES.NOT_FOUND} component={NotFound} />

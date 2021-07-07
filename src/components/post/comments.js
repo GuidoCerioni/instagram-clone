@@ -26,7 +26,11 @@ export default function Comments({
     if (daysDifference > 1) {
       // days ago handle
       if (daysDifference > 6) {
-        return `${Math.round(daysDifference / 7)} weeks ago`;
+        if (Math.round(daysDifference / 7) == 1) {
+          return `${Math.round(daysDifference / 7)} week ago`;
+        } else {
+          return `${Math.round(daysDifference / 7)} weeks ago`;
+        }
       }
       return `${daysDifference} days ago`;
     } else if (daysDifference < 1) {

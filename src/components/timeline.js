@@ -12,7 +12,7 @@ export default function Timeline() {
   const { photos } = usePhotos();
 
   if (!photos) {
-    return <Skeleton count={4} height={550} width={610} />;
+    return <Skeleton className="mb-8" count={4} height={850} width={610} />;
   } else if (photos.length > 0) {
     return photos.map((content, key) => (
       <div key={key}>
