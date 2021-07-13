@@ -29,12 +29,37 @@ export default function App() {
           }
         >
           <Switch>
-            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
+            <ProtectedRoute
+              path={ROUTES.DASHBOARD}
+              exact
+              redirectTo={ROUTES.LOGIN}
+              user={user}
+              ifUser={false}
+            >
               <Dashboard />
             </ProtectedRoute>
-            <Route path={ROUTES.LOGIN} component={Login} />
-            <Route path={ROUTES.SIGN_UP} component={SignUp} />
-            <Route path={ROUTES.NOT_FOUND} component={NotFound} />
+
+            <ProtectedRoute
+              path={ROUTES.LOGIN}
+              exact
+              redirectTo={ROUTES.DASHBOARD}
+              user={user}
+              ifUser={true}
+            >
+              <Login />
+            </ProtectedRoute>
+
+            <ProtectedRoute
+              path={ROUTES.SIGNUP}
+              exact
+              redirectTo={ROUTES.DASHBOARD}
+              user={user}
+              ifUser={true}
+            >
+              <SignUp />
+            </ProtectedRoute>
+
+            <Route path={ROUTES.NOTFOUND} component={NotFound} />
           </Switch>
         </Suspense>
       </Router>
