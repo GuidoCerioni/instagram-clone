@@ -22,6 +22,16 @@ export async function getUserByUserId(userId) {
    return user;
   */
 }
+export async function getUserByUsername(username) {
+  const user = await db
+    .collection('users')
+    .where('username', '==', username)
+    .get();
+  return user.docs.length > 0
+    ? { ...user.docs[0].data(), docId: user.docs[0].id }
+    : false;
+}
+
 export async function getSuggestedProfiles(userId, following) {
   // get 500 random profiles
   const profiles = await db.collection('users').limit(500).get();
