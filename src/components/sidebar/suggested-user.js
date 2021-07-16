@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import Loader from 'react-loader-spinner';
-import { updateFollowing } from '../../services/firebase';
-import { updateFollowers } from '../../services/firebase';
+import { updateFollowing, updateFollowers } from '../../services/firebase';
 
 export default function SuggestedUser({
   username,
