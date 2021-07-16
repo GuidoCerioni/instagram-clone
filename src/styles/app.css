@@ -17751,6 +17751,16 @@ video {
   }
 }
 
+@keyframes pulsefast {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+}
+
 .animate-none {
   animation: none;
 }
@@ -17769,6 +17779,10 @@ video {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+.animate-pulsefast {
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .mix-blend-normal {
@@ -35596,6 +35610,10 @@ input:-webkit-autofill {
     animation: bounce 1s infinite;
   }
 
+  .sm\:animate-pulsefast {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
   .sm\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -53324,6 +53342,10 @@ input:-webkit-autofill {
 
   .md\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .md\:animate-pulsefast {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .md\:mix-blend-normal {
@@ -71056,6 +71078,10 @@ input:-webkit-autofill {
     animation: bounce 1s infinite;
   }
 
+  .lg\:animate-pulsefast {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
   .lg\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -88784,6 +88810,10 @@ input:-webkit-autofill {
 
   .xl\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .xl\:animate-pulsefast {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .xl\:mix-blend-normal {
@@ -106516,6 +106546,10 @@ input:-webkit-autofill {
     animation: bounce 1s infinite;
   }
 
+  .\32xl\:animate-pulsefast {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
   .\32xl\:mix-blend-normal {
     mix-blend-mode: normal;
   }
@@ -124244,6 +124278,10 @@ input:-webkit-autofill {
 
   .phone\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .phone\:animate-pulsefast {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .phone\:mix-blend-normal {
