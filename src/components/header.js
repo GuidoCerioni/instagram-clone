@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
-import UserContext from '../context/user';
+import useUser from '../hooks/use-user';
+
 import * as ROUTES from '../constants/routes';
 
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
-  const { user } = useContext(UserContext);
+  const { user } = useUser();
 
   return (
     <header
@@ -68,11 +69,11 @@ export default function Header() {
             </button>
           </Link>
           <div className="flex items-center cursor-pointer mr-4">
-            <Link to={`/p/${user.displayName}`}>
+            <Link to={`/p/${user.username}`}>
               <img
                 className="rounded-full h-8 w-8 flex"
-                src={`/images/avatars/${user.displayName}.jpg`}
-                alt={`${user.displayName} profile`}
+                src={`/images/avatars/${user.username}.jpg`}
+                alt={`${user.username} profile`}
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = '/images/users/userNotFound.png';
