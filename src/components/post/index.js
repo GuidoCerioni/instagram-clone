@@ -19,7 +19,6 @@ export default function Post({ content }) {
   } = useContext(UserContext);
 
   const photoLiked = content.likes.includes(loggedUserId);
-  // console.log(`content.username`, content);
   return (
     <div className="mb-8 bg-white border border-gray-primary rounded ">
       <div className="px-4">

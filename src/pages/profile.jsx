@@ -1,8 +1,8 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useParams, useHistory } from 'react-router';
 import Header from '../components/header';
+import UserProfile from '../components/profile';
 import IgLoader from '../components/ig-loader';
-
 import { getUserByUsername } from '../services/firebase';
 import * as ROUTES from '../constants/routes';
 
@@ -16,36 +16,18 @@ export default function Profile() {
     async function checkUser() {
       const response = await getUserByUsername(username);
       if (response) {
-        setUserExist(true);
         setUser(response);
+        setUserExist(true);
       } else {
         history.push(ROUTES.NOTFOUND);
       }
     }
     checkUser();
   }, [username, history]);
-  console.log(`user`, user);
   return (
     <>
       <Header />
-      {userExist ? (
-        <div className="flex">
-          <img
-            className="rounded-full h-8 w-8 flex"
-            src={`/images/avatars/${user.username}.jpg`}
-            alt={`${user.username} profile`}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = '/images/users/userNotFound.png';
-            }}
-          />
-          <div>
-            <p>{user.username}</p>
-          </div>
-        </div>
-      ) : (
-        <IgLoader />
-      )}
+      {userExist ? <UserProfile user={user} /> : <IgLoader />}
     </>
   );
 }
