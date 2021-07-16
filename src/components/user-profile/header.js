@@ -1,15 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-
-export default function UserProfile({ user }) {
-  const [photos, setPhotos] = useState(null);
-  useEffect(() => {
-    async function getUserPhotos() {
-      const photos = getPhotosByUserId(user.userId);
-    }
-    getUserPhotos();
-  }, [user]);
-  console.log(`user2`, user);
+export default function Header({ user }) {
   return (
     <div className="flex">
       <img
@@ -27,7 +17,6 @@ export default function UserProfile({ user }) {
     </div>
   );
 }
-
-UserProfile.propTypes = {
+Header.propTypes = {
   user: PropTypes.object.isRequired,
 };

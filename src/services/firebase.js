@@ -31,7 +31,6 @@ export async function getUserByUsername(username) {
     ? { ...user.docs[0].data(), docId: user.docs[0].id }
     : false;
 }
-
 export async function getSuggestedProfiles(userId, following) {
   // get 500 random profiles
   const profiles = await db.collection('users').limit(500).get();
@@ -126,4 +125,16 @@ export async function updateComents(photoDocId, displayName, comment) {
     .update({
       comments: FieldValue.arrayUnion({ comment, displayName }),
     });
+}
+export async function getPhotosByUserId(userId) {
+  const response = await db
+    .collection('photos')
+    .where('userId', '==', userId)
+    .get();
+
+  const userPhotos = response.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id,
+  }));
+  return userPhotos.length > 0 ? userPhotos : false;
 }
