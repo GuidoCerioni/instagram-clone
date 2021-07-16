@@ -1,9 +1,10 @@
-import react, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
 import ProtectedRoute from './helpers/protected-route';
 import useAuthListener from './hooks/use-auth-listener';
+import IgLoader from './components/ig-loader';
 
 const Login = lazy(() => import('./pages/login'));
 const SignUp = lazy(() => import('./pages/signup'));
@@ -17,18 +18,7 @@ export default function App() {
   return (
     <UserContext.Provider value={{ user }}>
       <Router>
-        <Suspense
-          fallback={
-            <div
-              className="container
-                flex h-screen
-                justify-center
-                items-center"
-            >
-              Loading..
-            </div>
-          }
-        >
+        <Suspense fallback={<IgLoader />}>
           <Switch>
             <ProtectedRoute
               path={ROUTES.LOGIN}
