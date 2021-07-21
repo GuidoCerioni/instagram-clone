@@ -1,7 +1,11 @@
 /* eslint-disable max-len */
-export default function IgLoader() {
+import PropTypes from 'prop-types';
+
+export default function IgLoader({ marginTop }) {
   return (
-    <div className="w-full h-96 flex justify-center items-center">
+    <div
+      className={`w-full h-96 flex justify-center items-center mt-${marginTop}`}
+    >
       <div className="animate-pulsefast w-20 h-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -15,3 +19,6 @@ export default function IgLoader() {
     </div>
   );
 }
+IgLoader.propTypes = {
+  marginTop: PropTypes.string,
+};
