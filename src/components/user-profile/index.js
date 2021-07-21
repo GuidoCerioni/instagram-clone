@@ -4,31 +4,30 @@ import { getPhotosByUserId } from '../../services/firebase';
 import Header from './header';
 import UserPhotos from './user-photos';
 
-export default function UserProfile({ user }) {
+export default function UserProfile({ profile }) {
   const [photos, setPhotos] = useState(false);
   useEffect(() => {
     async function getUserPhotos() {
-      const response = await getPhotosByUserId(user.userId);
+      const response = await getPhotosByUserId(profile.userId);
       setPhotos(response);
     }
     getUserPhotos();
-  }, [user]);
-  console.log(`photos`, photos);
+  }, [profile]);
   return (
-    <>
-      <Header user={user} />
+    <div className="container px-5 mx-auto max-w-screen-lg">
+      <Header profile={profile} photos={photos} />
 
       {photos ? (
         <UserPhotos photos={photos} />
       ) : (
-        <div>
-          <p>Add photos!</p>
+        <div className="flex justify-center">
+          <p>User does not have any photos yet</p>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
 UserProfile.propTypes = {
-  user: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };

@@ -27,7 +27,7 @@ export default function Profile() {
   return (
     <>
       <Header />
-      {userExist ? <UserProfile user={user} /> : <IgLoader />}
+      {userExist ? <UserProfile profile={user} /> : <IgLoader />}
     </>
   );
 }
