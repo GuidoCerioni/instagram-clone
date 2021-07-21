@@ -13,6 +13,10 @@ export default function PostHeader({ username }) {
           <img
             className="rounded-full w-9 h-9 "
             src={`/images/avatars/${username}.jpg`}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = '/images/users/userNotFound.png';
+            }}
           />
         </Link>
         <Link to={`/p/${username}`} className="text-sm font-semibold">
