@@ -2,7 +2,6 @@ import usePhotos from '../hooks/use-photos';
 // import useUser from '../hooks/use-user';
 import Skeleton from 'react-loading-skeleton';
 import Post from './post';
-import IgLoader from './ig-loader';
 
 export default function Timeline() {
   /*
@@ -13,7 +12,7 @@ export default function Timeline() {
   const { photos } = usePhotos();
 
   if (!photos) {
-    return <IgLoader marginTop={'mt-32'} />;
+    return <Skeleton className="mb-8" count={4} height={850} width={610} />;
   } else if (photos.length > 0) {
     return photos.map((content, key) => (
       <div key={key}>
