@@ -138,10 +138,10 @@ export async function getPhotosByUserId(userId) {
   }));
   return userPhotos.length > 0 ? userPhotos : false;
 }
-export async function isUserFollowingProfile(loggedInUserId, profileId) {
+export async function isUserFollowingProfile(userId, profileId) {
   const response = await db
     .collection('users')
-    .where('userId', '==', loggedInUserId)
+    .where('userId', '==', userId)
     .get();
   return response.docs[0].data().following.includes(profileId) ? 1 : 0;
 }

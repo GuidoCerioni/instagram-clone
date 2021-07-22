@@ -9,15 +9,13 @@ import * as ROUTES from '../constants/routes';
 export default function Profile() {
   const history = useHistory();
   const { username } = useParams();
-  const [userExist, setUserExist] = useState(false);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
     async function checkUser() {
       const response = await getUserByUsername(username);
       if (response) {
         setUser(response);
-        setUserExist(true);
       } else {
         history.push(ROUTES.NOTFOUND);
       }
@@ -27,7 +25,7 @@ export default function Profile() {
   return (
     <>
       <Header />
-      {userExist ? <UserProfile profile={user} /> : <IgLoader />}
+      {user ? <UserProfile profile={user} /> : <IgLoader />}
     </>
   );
 }
