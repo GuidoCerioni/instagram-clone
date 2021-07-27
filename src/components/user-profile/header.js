@@ -106,7 +106,7 @@ export default function Header({ profile, photos }) {
     <>
       <div className="flex">
         <img
-          className="rounded-full h-16 w-16 mb-4 flex ml-2 mr-6 phonexs:h-24 phonexs:w-24 phone:mr-10 sm:h-36 sm:w-36 sm:mx-14"
+          className="rounded-full h-16 w-16 mb-4 flex ml-2 mr-6 phone:mr-10 sm:h-36 sm:w-36 sm:mx-14"
           src={`/images/avatars/${profile.username}.jpg`}
           alt={`${profile.username} profile`}
           onError={(e) => {
@@ -116,7 +116,9 @@ export default function Header({ profile, photos }) {
         />
         <div className="flex flex-col">
           <div className="flex mb-4 flex-col phonexs:flex-row phonexs:items-center">
-            <p className="text-2xl font-light mr-6">{profile.username}</p>
+            <p className="text-lg font-light mr-6 phone:text-2xl">
+              {profile.username}
+            </p>
 
             <div className="flex align-center mt-2 sm:mt-0">
               {renderButton(isFollowingProfile)}
@@ -150,7 +152,7 @@ export default function Header({ profile, photos }) {
               following
             </p>
           </div>
-          <p className="font-semibold inline-block text-xs sm:text-sm">
+          <p className="font-semibold inline-block text-xs sm:text-sm mb-4">
             {profile.fullName}
           </p>
         </div>
