@@ -28,6 +28,7 @@ module.exports = {
     extend: {
       screens: {
         phone: '450px',
+        phonexs: '350px',
       },
       height: {
         // prettier-ignore
