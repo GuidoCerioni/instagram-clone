@@ -71,14 +71,14 @@ export async function updateFollowing(
 }
 export async function updateFollowers(
   loggedUserId, // logged in user id
-  suggestedUserDocId, // profile DOC id i followed
+  profileDocId, // profile DOCid i followed
   isFollowing // true/false
 ) {
   // Toogle following user array (if not following, follow.
   // if following, unfollow
   return db
     .collection('users')
-    .doc(suggestedUserDocId)
+    .doc(profileDocId)
     .update({
       followers: isFollowing // true=>unfollow. false=>follow
         ? FieldValue.arrayRemove(loggedUserId)
@@ -136,7 +136,7 @@ export async function getPhotosByUserId(userId) {
     ...photo.data(),
     docId: photo.id,
   }));
-  return userPhotos.length > 0 ? userPhotos : false;
+  return userPhotos.length > 0 ? userPhotos : [];
 }
 export async function isUserFollowingProfile(userId, profileId) {
   const response = await db
