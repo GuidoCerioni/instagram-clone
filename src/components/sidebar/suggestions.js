@@ -28,7 +28,7 @@ export default function Suggestions({
   } else if (profiles.length > 0) {
     return (
       <div className="rounded flex flex-col">
-        <p className="py-4 text-sm font-semibold text-gray-base">
+        <p className="mb-2 text-sm font-semibold text-gray-base">
           Suggestions For You
         </p>
 

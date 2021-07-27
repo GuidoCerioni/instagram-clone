@@ -68,7 +68,7 @@ export default function SuggestedUser({
           />
         </div>
         <div className="flex flex-col justify-evenly">
-          <p className="text-sm font-bold">
+          <p className="text-sm font-semibold">
             {`${splittedFullName[0]}` /* first name */}
             {
               /* last name (if exist) */
@@ -77,7 +77,7 @@ export default function SuggestedUser({
               ) : null
             }
           </p>
-          <p className="text-xs ">{`@${username}`}</p>
+          <p className="text-xs text-gray-base ">{`@${username}`}</p>
         </div>
       </Link>
       <div className="flex items-center">
@@ -90,7 +90,7 @@ export default function SuggestedUser({
         />
         <button
           type="button"
-          className="text-sm font-semibold ml-2
+          className="text-xs font-semibold ml-2
         text-blue-medium  hover:text-blue-mediumHover"
           onClick={handleFollowButton}
         >

@@ -7,27 +7,25 @@ const User = ({ username, fullName }) =>
   !username || !fullName ? (
     <Skeleton count={1} height={61} />
   ) : (
-    <Link
-      to={`/p/${username}`}
-      className="grid grid-cols-3 gap-4 mb-6
-    items-center"
-    >
-      <div className="col-span-1 flex items-center justify-between">
+    <div className="flex mb-6 items-center">
+      <Link to={`/p/${username}`}>
         <img
           src={`/images/avatars/${username}.jpg`}
-          className="rounded-full w-16 h-16"
+          className="rounded-full w-14 h-14"
           alt={`${fullName} profile picture`}
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = '/images/users/userNotFound.png';
           }}
         />
+      </Link>
+      <div className="ml-6 flex flex-col justify-evenly">
+        <Link to={`/p/${username}`}>
+          <p className="text-sm font-semibold">{username}</p>
+          <p className="text-sm text-gray-base">{fullName}</p>
+        </Link>
       </div>
-      <div className="col-span-2 flex flex-col justify-evenly">
-        <p className="text-sm font-bold">{username}</p>
-        <p className="text-sm">{fullName}</p>
-      </div>
-    </Link>
+    </div>
   );
 
 export default memo(User);

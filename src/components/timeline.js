@@ -4,11 +4,6 @@ import Skeleton from 'react-loading-skeleton';
 import Post from './post';
 
 export default function Timeline() {
-  /*
-  const {
-    user: { following: userFollowing },
-  } = useUser();
-  */
   const { photos } = usePhotos();
 
   if (!photos) {

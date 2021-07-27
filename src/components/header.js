@@ -11,11 +11,11 @@ export default function Header() {
 
   return (
     <header
-      className="sticky z-10 top-0 h-14
+      className="sticky z-10 top-0 h-14 flex justify-center
      bg-white border-b border-gray-primary mb-7"
     >
       <div
-        className="container px-5 mx-auto max-w-screen-lg
+        className="container px-5 max-w-screen-lg
       flex justify-between h-full"
       >
         <div className="flex items-center cursor-pointer">
@@ -68,7 +68,7 @@ export default function Header() {
               </svg>
             </button>
           </Link>
-          <div className="flex items-center cursor-pointer mr-4">
+          <div className="flex items-center cursor-pointer">
             <Link to={`/p/${user.username}`}>
               <img
                 className="rounded-full h-8 w-8 flex"
