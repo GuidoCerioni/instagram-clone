@@ -15,7 +15,7 @@ export default function UserProfile({ profile }) {
     getUserPhotos();
   }, [profile]);
   return (
-    <div className="container px-5 mx-auto max-w-screen-lg mb-10">
+    <div className="container px-2 mx-auto max-w-screen-lg mb-10 phone:px-5">
       <Header profile={profile} photos={photos} />
       <UserPhotos photos={photos} />
     </div>
