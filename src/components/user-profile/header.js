@@ -116,12 +116,19 @@ export default function Header({ profile, photos }) {
         />
         <div className="flex flex-col">
           <div className="flex mb-4 flex-col phonexs:flex-row phonexs:items-center">
-            <p className="text-lg font-light mr-6 phone:text-2xl">
+            <p className="text-lg font-light mr-4 phone:text-2xl phone:mr-6">
               {profile.username}
             </p>
 
             <div className="flex align-center mt-2 sm:mt-0">
-              {renderButton(isFollowingProfile)}
+              {<button
+                className="py-1 px-1 rounded-md text-xs font-semibold bg-blue-medium text-white
+                phone:font-bold phone:text-sm phone:px-2"
+                type="button"
+                onClick={handleToggleFollow}
+              >
+                {isFollowingProfile ? 'Unfollow' : 'Follow'}
+              </button>}
               <Loader
                 className={`${loaderDisplay} ml-4`}
                 type="TailSpin"
