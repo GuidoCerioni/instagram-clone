@@ -13,8 +13,8 @@ export default function Profile() {
 
   useEffect(() => {
     async function checkUser() {
-      const response = await getUserByUsername(username);
-      if (response) {
+      const user = await getUserByUsername(username);
+      if (user) {
         setUser(response);
       } else {
         history.push(ROUTES.NOTFOUND);
@@ -25,7 +25,7 @@ export default function Profile() {
   return (
     <>
       <Header />
-      {user ? <UserProfile profile={user} /> : <IgLoader />}
+      {user ? <UserProfile user={user} /> : <IgLoader />}
     </>
   );
 }

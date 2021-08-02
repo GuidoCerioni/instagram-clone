@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import PropTypes from 'prop-types';
 import useUser from '../../hooks/use-user';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import {
   isUserFollowingProfile,
   updateFollowing,
