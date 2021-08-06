@@ -1,19 +1,21 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { getPhotosByUserId } from '../../services/firebase';
 import Header from './header';
 import UserPhotos from './user-photos';
 
 export default function UserProfile({ user }) {
-  const [photos, setPhotos] = useState(false);
-
+  const reducer = (state, action) => ({ ...state, ...action });
   const initialState = {
-    isFollowing: false,
-    followersCount: user.followers.length,
-    loaderDisplay1: 'hidden',
+    profile: user,
+    photos: [],
+    followerCount: 0,
   };
-  function reducer(state, action) {}
-  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const [{ profile, photos, followerCount }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   useEffect(() => {
     async function getUserPhotos() {
