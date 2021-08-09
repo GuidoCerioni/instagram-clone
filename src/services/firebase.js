@@ -143,5 +143,5 @@ export async function isUserFollowingProfile(userId, profileId) {
     .collection('users')
     .where('userId', '==', userId)
     .get();
-  return response.docs[0].data().following.includes(profileId) ? 1 : 0;
+  return response.docs[0].data().following.includes(profileId) ? true : false;
 }

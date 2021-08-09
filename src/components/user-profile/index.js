@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { getPhotosByUserId } from '../../services/firebase';
 import Header from './header';
 import UserPhotos from './user-photos';
@@ -7,31 +7,48 @@ import UserPhotos from './user-photos';
 export default function UserProfile({ user }) {
   const reducer = (state, action) => ({ ...state, ...action });
   const initialState = {
-    profile: user,
     photos: [],
+    photosCount: 0,
     followerCount: 0,
   };
 
-  const [{ profile, photos, followerCount }, dispatch] = useReducer(
+  const [{ photos, photosCount, followerCount }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
   useEffect(() => {
-    async function getUserPhotos() {
-      const response = await getPhotosByUserId(user.userId);
-      setPhotos(response);
+    async function updateState() {
+      const userPhotos = await getPhotosByUserId(user.userId);
+
+      dispatch({
+        photos: userPhotos,
+        photosCount: userPhotos.length,
+        followerCount: user.followers.length,
+      });
     }
-    getUserPhotos();
+    updateState();
   }, [user]);
   return (
     <div className="container px-2 mx-auto max-w-screen-lg mb-10 phone:px-5">
-      <Header profile={user} photos={photos} />
+      <Header
+        profile={user}
+        photosCount={photosCount}
+        followerCount={followerCount}
+        setFollowerCount={dispatch}
+      />
       <UserPhotos photos={photos} />
     </div>
   );
 }
 
 UserProfile.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    docId: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
+    fullName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    following: PropTypes.array.isRequired,
+    followers: PropTypes.array.isRequired,
+  }).isRequired,
 };
