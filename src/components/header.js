@@ -24,10 +24,10 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+          <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" className="mr-5 ">
             <button type="button" title="Home">
               <svg
-                className="w-7 mr-5 text-black cursor-pointer"
+                className="text-black cursor-pointer"
                 fill="262626"
                 viewBox="0 0 48 48"
                 height="22"
@@ -43,7 +43,7 @@ export default function Header() {
               </svg>
             </button>
           </Link>
-          <Link to={ROUTES.LOGIN}>
+          <Link to={ROUTES.LOGIN} aria-label="Sign out" className="mr-5">
             <button
               type="button"
               title="Sign Out"
@@ -52,7 +52,7 @@ export default function Header() {
               }}
             >
               <svg
-                className="w-8 mr-5 text-black cursor-pointer"
+                className="w-8 text-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

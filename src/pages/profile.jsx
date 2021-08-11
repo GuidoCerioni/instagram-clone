@@ -7,25 +7,25 @@ import { getUserByUsername } from '../services/firebase';
 import * as ROUTES from '../constants/routes';
 
 export default function Profile() {
-  const history = useHistory();
   const { username } = useParams();
   const [user, setUser] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
-    async function checkUser() {
-      const response = await getUserByUsername(username);
-      if (response) {
-        setUser(response);
+    async function checkUserExist() {
+      const user = await getUserByUsername(username);
+      if (user) {
+        setUser(user);
       } else {
         history.push(ROUTES.NOTFOUND);
       }
     }
-    checkUser();
+    checkUserExist();
   }, [username, history]);
   return (
     <>
       <Header />
-      {user ? <UserProfile profile={user} /> : <IgLoader />}
+      {user ? <UserProfile user={user} /> : <IgLoader />}
     </>
   );
 }
