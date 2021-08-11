@@ -3,7 +3,6 @@ import UserContext from '../../context/user';
 import PropTypes from 'prop-types';
 import Actions from './actions';
 import PostHeader from './header';
-import PostPhoto from './photo';
 import Comments from './comments';
 import Footer from './footer';
 
@@ -12,8 +11,6 @@ export default function Post({ content }) {
   function handleFocus() {
     commentInput.current.focus();
   }
-
-  // header, photo,buttons, footer
   const {
     user: { uid: loggedUserId },
   } = useContext(UserContext);
@@ -24,7 +21,7 @@ export default function Post({ content }) {
       <div className="px-4">
         <PostHeader username={content.username} />
       </div>
-      <PostPhoto imageSrc={content.imageSrc} />
+      <img src={content.imageSrc} caption={content.caption} />
       <div className="px-4">
         <Actions
           totalLikes={content.likes.length}

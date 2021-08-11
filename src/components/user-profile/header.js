@@ -41,6 +41,7 @@ export default function Header({
   async function handleFollowUser() {
     try {
       setLoaderDisplay('inline-block');
+      // TODO: make just one function call
       await updateFollowing(loggedInUser.docId, profile.userId, false);
       await updateFollowers(loggedInUser.userId, profile.docId, false);
     } catch (err) {

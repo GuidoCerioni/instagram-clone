@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AddComment from './add-comment';
-
+import calculateDaysCreatedAgo from '../../helpers/calculateDays';
 export default function Comments({
   comments: allComments,
   dateCreated,
@@ -14,31 +14,8 @@ export default function Comments({
   const [commentsDisplay, setCommentsDisplay] = useState('hidden');
   const [viewAllButtonDisplay, setViweAllButtonDisplay] = useState('block');
 
-  function calculateDaysCreatedAgo() {
-    const date = new Date(dateCreated);
-    const actualDate = new Date();
+  const daysCreatedAgo = calculateDaysCreatedAgo(dateCreated);
 
-    // prettier-ignore
-    const daysDifference = Math.round(
-      (actualDate.getTime() - date.getTime()) / (1000 * 3600 * 24)
-    );
-
-    if (daysDifference > 1) {
-      // days ago handle
-      if (daysDifference > 6) {
-        if (Math.round(daysDifference / 7) == 1) {
-          return `${Math.round(daysDifference / 7)} week ago`;
-        } else {
-          return `${Math.round(daysDifference / 7)} weeks ago`;
-        }
-      }
-      return `${daysDifference} days ago`;
-    } else if (daysDifference < 1) {
-      return `today`;
-    } else {
-      return `${daysDifference} day ago`;
-    }
-  }
   function handleViewAllComments() {
     if (commentsDisplay === 'hidden') {
       setCommentsDisplay('block');
@@ -48,7 +25,6 @@ export default function Comments({
       setViweAllButtonDisplay('block');
     }
   }
-
   return (
     <>
       <div className="px-4">
@@ -91,7 +67,7 @@ export default function Comments({
       </div>
 
       <p className="px-4 py-2 text-xxs uppercase text-gray-base ">
-        {calculateDaysCreatedAgo()}
+        {daysCreatedAgo}
       </p>
 
       <AddComment
