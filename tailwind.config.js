@@ -1,9 +1,6 @@
 /* eslint-disable quote-props */
 module.exports = {
-  purge: {
-    enabled: true,
-    content: ['./src/**/*.js', './src/**/**/*.js', './src/*.js'],
-  },
+  purge: ['./src/*.js', './src/**/*.js', './src/**/**/*.js'],
   theme: {
     fill: (theme) => ({
       red: theme('colors.red.primary'),
