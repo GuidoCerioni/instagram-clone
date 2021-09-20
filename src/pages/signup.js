@@ -45,7 +45,7 @@ export default function Login() {
           username: username.toLowerCase(),
           fullName,
           emailAddress: emailAddress.toLowerCase(),
-          following: ["ojmwfkQikJVM8V4pSWx1FljARKf1"],
+          following: ['ojmwfkQikJVM8V4pSWx1FljARKf1'],
           followers: [],
           dateCreated: Date.now(),
         };
